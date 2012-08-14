@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>TourJS</title>
+	<link rel="stylesheet" href="css/tour.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/tour.js"></script>
+	
+	<!-- In-page demo styles. Feel free to discard.  -->
+	<style>
+		body {
+			font-family: helvetica;
+			background: #cedce7; /* Old browsers */
+			background: -moz-radial-gradient(center, ellipse cover, #fff 0%, #dbdbdb 100%); /* FF3.6+ */
+			background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#fff), color-stop(100%,#dbdbdb)); /* Chrome,Safari4+ */
+			background: -webkit-radial-gradient(center, ellipse cover, #fff 0%,#dbdbdb 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-radial-gradient(center, ellipse cover, #fff 0%,#dbdbdb 100%); /* Opera 12+ */
+			background: -ms-radial-gradient(center, ellipse cover, #fff 0%,#dbdbdb 100%); /* IE10+ */
+			background: radial-gradient(center, ellipse cover, #fff 0%,#dbdbdb 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#dbdbdb',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		}
+		.demo_container {
+			margin: auto;
+			text-align: center;
+			width: 330px;
+		}
+		.demo_item {
+			background-color: #fff;
+			border: 1px solid #B1B1B1;
+			border-radius: 10px;
+			box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.2);
+			display: inline-block;
+			margin: 75px;
+			padding: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div class="demo_container">
+		<div class="step1 demo_item">I'm a vanilla tour item.</div>
+		<div class="step2 demo_item">For every action... <button id="action">Reaction</button></div>
+		<div class="step3 demo_item">Step 3</div>
+		<div class="step4 demo_item" style="margin-top:700px;">Scroll to me because I'm off screen.</div>
+	</div>
+	<script>
+		// fire off the tour when ready
+		tourJS();
+	</script>
+</body>
+</html>
