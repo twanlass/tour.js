@@ -1,4 +1,9 @@
+// (c) 2012 Tyler Wanalss / tdub.co
+
 function tourJS() {
+
+	//  EDIT THIS SECTION 
+	//  Add as many steps you need. They will be executed in order
 
 	var TourSteps = [
 	   	{
@@ -39,8 +44,10 @@ function tourJS() {
 		},
 	] 
 
+	// END EDIT
+
 	var Tour = {
-		curStop: 0, // override this to star the tour from a specified point
+		curStop: 0, // override this to start the tour from a specified point
 		offsetFudge: 15, // adjusts distance from target for tour dialog 
 		allowSkip: false, // coming in a future update
 		funnelID: "tourV1", // we'll pass this to Mixpanel to segement on and guage future funnel improvment 
@@ -99,6 +106,8 @@ function tourJS() {
 			}
 		},
 
+		// To use: include MixPanel js (see mixpanel.com). Set identity or person info *before* the tour starts. 
+		// Add a "actionName" string to each step and upon user completion it will be automatically sent to MixPanel for funnel tracking
 		mpEvent: function(eventName) {
 			if(eventName){
 				mixpanel.track(eventName, {"funnelVersion": this.funnelID});
@@ -113,6 +122,8 @@ function tourJS() {
 		},
 
 		setDialogPos: function(position) {
+
+			// @todo - need to calculate arrow position in px instead of %
 
 			var selArray = TourSteps[this.curStop].selector.split(",");
 			var target = $(selArray[0]);
@@ -164,14 +175,14 @@ function tourJS() {
 		},
 
 		setupSelectorsLive: function() {
-			// tour item class allows us to pull a an element up the z-index and focus on it
+			// tour item class allows us to pull an element up the z-index and focus on it
 			// if we pass more than one selector, loop through and add the class to all of them
 			var selArray=TourSteps[this.curStop].selector.split(",");
 			for (var i = 0; i < selArray.length; i++) {
 				$(selArray[i]).addClass('tour_item');
 			}
 			
-			// setup triggers for latent actions - use .trigger() to fire these off
+			// setup triggers for latent actions - use .trigger() to fire these off once the user has complete a custom action in your app
 			var trigger = TourSteps[this.curStop].waitForTrigger;
 			if(trigger){
 				$('body').append('<div id="'+trigger.substring(1)+'" style="display: none;"></div>');
@@ -190,11 +201,11 @@ function tourJS() {
 		// Check to see if the next action was clicked to advance the tour (nextSelector)
 		tourClickHandler: function(e) {
 			var nextSel = TourSteps[e.data.stop].nextSelector;
-			if(nextSel) { // we only proceed when THIS selector is clicked 
+			if(nextSel) { // we only proceed when THIS selector is clicked i.e. #ok_button
 				if($(e.currentTarget).is(nextSel) || $(nextSel).find(e.currentTarget).length > 0){
 					Tour.stepComplete();
 				}
-			}else{
+			}else{ // no next selector specified. Any click or action will continue the tour
 				Tour.stepComplete();
 			}
 		}
