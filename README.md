@@ -19,20 +19,18 @@ Setup
 =======
 
 + Include tour.js and tour.css:
-++	<link rel="stylesheet" href="css/tour.css">
-++	<script src="js/tour.js"></script>
+`<link rel="stylesheet" href="css/tour.css">`
+`<script src="js/tour.js"></script>`
 
 + Add your tour steps:
-++	Add stops to the TourSteps object at the top of tour.js - see Tour Step Config below.
-
 
 Tour Step Config
 =======
 
-+"msg": "Welcome to TourJS.", // tour dialog text
-+"actionName" : false, // name of Mixpanel event used for funnel analysis - spaces are fine, use friendly names. 
-+"selector" : "body", // selector for highlighted feature. Comma seperated list = (dialog target, additional items highlight). Don't forget your '.' or '#' 
-+"position" : "center", // dialog location in relation to target feature (selector). top, bottom, left, right, (or 'center' which centers to screen)
-+"btnMsg" : "Start Tour &raquo", // if you'd like a button on the dialog simply add a message here
-+"nextSelector" : "#tour_dialog_btn", // does the user need click something to advance? Omit for any action click to advance.
-+"waitForTrigger" : false, // should we pause the tour here while the user does something? Pass a seletor as the trigger to resume the tour from this point
++ "msg": "Welcome to TourJS.", // tour dialog text
++ "actionName" : false, // name of Mixpanel event used for funnel analysis - spaces are fine, use friendly names. 
++ "selector" : "body", // selector for highlighted feature. Comma seperated list = (dialog target, additional items highlight). Don't forget your '.' or '#' 
++ "position" : "center", // dialog location in relation to target feature (selector). top, bottom, left, right, (or 'center' which centers to screen)
++ "btnMsg" : "Start Tour &raquo", // if you'd like a button on the dialog simply add a message here
++ "nextSelector" : "#tour_dialog_btn", // does the user need click something to advance? Omit for any action click to advance.
++ "waitForTrigger" : false, // should we pause the tour here while the user does something? Pass a seletor as the trigger to resume the tour from this point
