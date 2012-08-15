@@ -99,14 +99,14 @@
 	    border-right: 10px solid transparent;
 	    border-top: 10px solid #363636;
 	    bottom: -10px;
-	    left: 48%%;
+	    left: 48%;
 	}
 
 	#tour_dialog .arrow.bottom {
 	    border-bottom: 10px solid #363636;
 	    border-left: 10px solid transparent;
 	    border-right: 10px solid transparent;
-	    left: 48%%;
+	    left: 48%;
 	    top: -8px;
 	}
 

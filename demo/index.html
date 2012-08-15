@@ -42,8 +42,49 @@
 		<div class="step4 demo_item" style="margin-top:700px;">Scroll to me because I'm off screen.</div>
 	</div>
 	<script>
+	
+		// Config tour steps
+		var tourSteps = [
+		   	{
+				"msg": "Welcome to TourJS. Let's check out a simple tour.", // tour bubble / dialog text
+			    "actionName" : false, // name of Mixpanel event used for funnel analysis - spaces are fine, use friendly names. You'll need to setup MP yourself however and include the libs.
+			    "selector" : "body", // selector for highlighted feature. Comma seperated list = (dialog target, additional items to pop above mask). Don't forget your '.' or '#' 
+			    "position" : "center", // dialog location in relation to target (selector). top, bottom, left, right, (or 'center' which centers to screen)
+			    "btnMsg" : "Start Tour &raquo", // if you'd like a button on the dialog simply add a message here
+			    "nextSelector" : "#tour_dialog_btn", // does the user need to do something specific to advance? For example, clicking the tour bubble ok button. Omit for any action click to advance.
+				"waitForTrigger" : false, // should we pause the tour here? while the user does something? Pass a seletor as the trigger to resume the tour from this point
+			},
+		    {
+				"msg": "Notice how the item is pulled out of the page and highlighed?", 
+			    "selector" : ".step1", 
+			    "position" : "right",
+			},	 
+			{
+				"msg": "You can require an action from the user before moving on:", 
+			    "selector" : ".step2", 
+			    "position" : "left",
+			   	"nextSelector" : "#action",
+			},	 
+			{
+				"msg": "Did you notice the smooth transitions between steps?", 
+			    "selector" : ".step3", 
+			    "position" : "bottom",
+			},	 
+			{
+				"msg": "TourJS will automatically scroll to hidden items.", 
+			    "selector" : ".step4", 
+			    "position" : "top",
+			},			
+			{
+				"msg": "That's it. You've completed the tour!", 
+			    "selector" : "body", 
+			    "position" : "center",
+			    "btnMsg" : "Finish &raquo",
+			},
+		] 
+
 		// fire off the tour when ready
-		tourJS();
+		tourJS(tourSteps);
 	</script>
 </body>
 </html>

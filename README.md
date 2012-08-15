@@ -1,36 +1,44 @@
-tour.js - v0.1
+Tour.js - v0.1
 =======
 
-A simple webapp tour system. Highlight new features and track funnels with MixPanel.  
+A simple webapp tour system. Walk users through features and track funnels with MixPanel. Great for first run experiences. 
 
 Features
 =======
 
 + Simple, lightweight. 
-+ Highlights elements on the page. Just feed in a selector (.class or #id).
++ **Only dependency is jQuery**. 
++ Easily elements on the page. Just feed in a selector (.class or #id).
 + Smooth scrolls to any tour element off screen or partially hidden.
-+ Supports pausing of the tour - allow users to complete a task before moving on.
-+ Only dependency is jQuery. 
++ Supports pausing of the tour allowing users to complete a task before moving on.
 + Easily styled w/ 2 or 3 css classes.
 + Fully autonomus - no need to change any of your page markup. Easily add or remove the tour. 
-+ Optionally supports MixPanel Funnels. Simply configure the step names of your tour and TourJS will send funnel actions for you. 
++ Supports MixPanel Funnels. Simply configure the step names of your tour and TourJS will send funnel actions for you. 
 
 Setup
 =======
 
 + Include tour.js and tour.css:
-`<link rel="stylesheet" href="css/tour.css">`
-`<script src="js/tour.js"></script>`
 
-+ Add your tour steps:
+		<link rel="stylesheet" href="css/tour.css">
 
-Tour Step Config
+		<script src="js/tour.js"></script>
+
++ Create a new object:
+
+		var tourSteps = [{"msg":"Hello Tour!", "selector":"body", "position"":"center"}]
+		
++ Call the tour to start it:
+	
+		tourJS(tourSteps);
+
+Additional Tour Step Options
 =======
 
-+ "msg": "Welcome to TourJS.", // tour dialog text
-+ "actionName" : false, // name of Mixpanel event used for funnel analysis - spaces are fine, use friendly names. 
-+ "selector" : "body", // selector for highlighted feature. Comma seperated list = (dialog target, additional items highlight). Don't forget your '.' or '#' 
-+ "position" : "center", // dialog location in relation to target feature (selector). top, bottom, left, right, (or 'center' which centers to screen)
-+ "btnMsg" : "Start Tour &raquo", // if you'd like a button on the dialog simply add a message here
-+ "nextSelector" : "#tour_dialog_btn", // does the user need click something to advance? Omit for any action click to advance.
-+ "waitForTrigger" : false, // should we pause the tour here while the user does something? Pass a seletor as the trigger to resume the tour from this point
++ **msg** [string] : text to display in the dialog box.
++ **actionName** [string] : name of Mixpanel event used for funnel analysis. Spaces are fine, use friendly names. 
++ **selector** [string - css selector] : the item to highlight or feature for this step. Accepts a comma seperated list, first item will get dialog box focus. Don't forget your '.' or '#'. 
++ **position** [string] : dialog location in relation to target selector. **top**, **bottom**, **left**, **right**, or **center** (which centers to screen).
++ **btnMsg** [string] : if present, the dialog will feature a button w/ this text ("Start Tour, etc").
++ **nextSelector** [string - css selector] : force the user to click a specific selector to advance. Else any click will advance.
++ **waitForTrigger** [string - css selector] : this will pause the tour when this step is done. It will only advance / resume when this selector is clicked (use .trigger() to fire).
