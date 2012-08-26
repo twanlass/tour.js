@@ -9,9 +9,7 @@ function tourJS(TourSteps) {
 		funnelID: "tourV1", // we'll pass this to Mixpanel to segement on and guage future funnel improvment 
 
 		init: function() {
-			window.tourActive = true; //@hack - prevent certain elements from being clicked while in tour
 			$('body').prepend('<div id="tour_mask"></div><div id="tour_dialog"><div class="arrow top"></div><div class="msg"></div></div>');
-			// this.setupSelectors(); // helper class 
 			this.showStep();
 		},
 
@@ -52,13 +50,12 @@ function tourJS(TourSteps) {
 
 		tourComplete: function() {
 			$('#tour_dialog').fadeOut();
-			// sipmle check to see if we're pausing or at the end of our tour
+			// sipmle check to see if we're pausing or at the end of our tour step
 			// if we're just pausing, we want to keep focus on the area until we move forward
 			if(this.curStop == TourSteps.length) {
 				$('#tour_mask').fadeOut(function() {
 					$('.tour_item').removeClass('active');
 				});
-				window.tourActive = false; // @ hack - prevent some elments from being clickable until the tour is over
 			}
 		},
 
@@ -73,7 +70,6 @@ function tourJS(TourSteps) {
 		getContent: function() {
 			var message = TourSteps[this.curStop].msg;
 			message += TourSteps[this.curStop].btnMsg ? "<hr><div id='tour_dialog_btn' class='button'>"+  TourSteps[this.curStop].btnMsg +"</div>" : "";
-			message += this.allowSkip ? "<a id='tour_skip'>Skip Tour &raquo</a>" : "";
 			$('#tour_dialog .msg').html(message);
 		},
 

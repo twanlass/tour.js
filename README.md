@@ -10,7 +10,7 @@ Features
 + Easily highlights elements / buttons / features on the page. Just feed in a selector ( .class or #id ).
 + Automatically scrolls to any tour element off screen or partially hidden.
 + Supports pausing of the tour allowing users to complete a task or action before moving on.
-+ Styles or lightweight and super easy to customize.
++ Styles are lightweight and super easy to customize.
 + Fully autonomus / self contained. No need to change any of your page markup.
 + Supports MixPanel Funnels. Simply configure the step names of your tour and TourJS will send funnel actions for you (requires mixpanel account and js includes).
 + **Only dependency is jQuery**.
